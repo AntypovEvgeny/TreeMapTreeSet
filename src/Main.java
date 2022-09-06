@@ -9,6 +9,7 @@ public class Main {
         people.add(new Person("Kolya", "Davydov Glebov", 17));
         people.add(new Person("Foma", "Ivlev Lobov Znatokov", 18));
         people.add(new Person("Tolya", "Muhov", 21));
+        people.add(new Person("Sveta", "Vegan Mari", 18));
 
         Collections.sort(people, new PersonsSurnameComparator(2));
         System.out.println(people);
