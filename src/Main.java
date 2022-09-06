@@ -1,9 +1,11 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.function.Predicate;
+
 
 public class Main {
     public static void main(String[] args) {
+        int yearPeople = 18;
         List<Person> people = new ArrayList<>();
         people.add(new Person("Roma", "Ivlev", 15));
         people.add(new Person("Kolya", "Davydov Glebov", 17));
@@ -11,16 +13,10 @@ public class Main {
         people.add(new Person("Tolya", "Muhov", 21));
         people.add(new Person("Sveta", "Vegan Mari", 18));
 
-        people.sort((o1, o2) -> {
-            int quantityWordSurname1 = o1.getSurname().split(" +").length;
-            int quantityWordSurname2 = o2.getSurname().split(" +").length;
+        Predicate<Person> predicate = person -> person.getAge() <= yearPeople;
 
-            if (quantityWordSurname1 == quantityWordSurname2 || quantityWordSurname1 >= 2) {
-                return Integer.compare(o1.getAge(), o2.getAge());
-            } else {
-                return Integer.compare(quantityWordSurname1, quantityWordSurname2);
-            }
-        });
+        people.removeIf(predicate);
+
         System.out.println(people);
     }
 }
